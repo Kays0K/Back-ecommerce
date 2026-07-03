@@ -1,0 +1,49 @@
+<button onclick="buscarUsuarios()">Buscar</button>
+
+<input type="text" id="nome" placeholder="Digite seu nome">
+<input type="text" id="email" placeholder="Digite seu email">
+<input type="text" id="senha" placeholder="Digite sua senha">
+<button onclick="cadastrarUsuario()">Cadastrar</button>
+
+<div id="lista-usuarios"></div>
+
+<script>
+    async function buscarUsuarios() {
+        const resultado = await fetch('http://localhost:3000/usuarios')
+        const usuarios = await resultado.json();
+        renderizarUsuarios(usuarios)
+    }
+
+    function renderizarUsuarios(usuarios) {
+        const div = document.getElementById("lista-usuarios")
+
+        usuarios.forEach(usuario => {
+            const card = document.createElement('div')
+            card.style.border = '1px solid #ccc'
+
+            card.innerHTML = `<h1>${usuario.email}</h1>`
+            div.appendChild(card)
+        })
+    }
+
+    async function cadastrarUsuario () {
+        const nome = document.getElementById('nome').value
+        const senha = document.getElementById('senha').value
+        const email = document.getElementById('email').value
+
+        const body = {
+            nome,
+            email,
+            senha
+        }
+        const resultado = await fetch('http://localhost:3000/usuarios', {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {"Content-Type": "application/json"}
+        })
+        const retorno = await resultado.json()
+        alert(retorno.mensagem)
+    }
+
+
+</script>

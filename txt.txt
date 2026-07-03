@@ -1,0 +1,33 @@
+Criar um repositório no GitHub.
+
+abrir o visual studio code em uma pasta.
+
+abrir o terminal com CTRL + "
+
+git clone <COLE O LINK DO REPOSITÓRIO DO GITHUB>.
+
+Abrir o vscode na pasta que foi gerada pelo git.
+
+criar o arquivo server.js
+
+npm init -y
+
+ajustar o package.json:
+
+colocar node --watch server.js no script de start.
+
+colocar type: module
+
+inserir o conteúdo no server.js:
+
+import Fastify from 'fastify'
+
+const servidor = Fastify()
+
+servidor.get('/usuarios', () => {
+    return 'Está funcionando!'
+})
+
+servidor.listen({
+    port: 3000
+})

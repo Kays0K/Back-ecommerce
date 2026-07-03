@@ -1,0 +1,39 @@
+###
+
+GET http://localhost:3000/produtos
+
+###
+
+POST http://localhost:3000/usuarios
+Content-Type: application/json
+
+{
+    "nome": "Vinicius",
+    "email": "marquinhoLindo@gmail.com",
+    "senha": "12345"
+}
+
+###
+
+PUT http://localhost:3000/usuarios/55
+Content-Type: application/json
+
+{
+    "nome": "Kauane",
+    "email": "kauane@gmail.com",
+    "senha": "leaf green"
+}
+
+###
+
+DELETE http://localhost:3000/usuarios/3
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "marquinhoLindo@gmail.com",
+    "senha": "12345"
+}
